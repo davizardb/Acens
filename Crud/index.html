@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crudacens</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header> 
+            <div id="logo" class="container">                
+                <img src="logo.png">
+                <div class="topnav">
+                    <ul>
+                        <li><h1>CrudAcens</h1></li>
+                    </ul>
+                </div>
+            </div>
+    </header>
+        <table class="container">
+            <tr>
+               <div class="row">
+                   <td>
+                       <form onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
+                           <div>
+                               <label>Nome*</label><label class="validation-error hide" id="fullNameValidationError">Este campo é obrigatório.</label>
+                               <input type="text" name="fullName" id="fullName">
+                           </div>
+                           <div>
+                               <label>Stack</label><label class="validation-error hide" id="stackValidationError">Este campo é obrigatório.</label>
+                               <input type="text" name="stack" id="stack">
+                           </div>
+                           <div>
+                               <label>Valor</label><label class="validation-error hide" id="fullNameValidationError">Este campo é obrigatório.</label>
+                               <input type="number" name="valor" id="valor">
+                           </div>
+                           <div>
+                               <label>Dias úteis</label><label class="validation-error hide" id="fullNameValidationError">Este campo é obrigatório.</label>
+                               <input type="number" name="dias" id="dias">
+                           </div>
+                           <div>
+                                <label>Desenvolvedores</label><label class="validation-error hide" id="fullNameValidationError">Este campo é obrigatório.</label>
+                                <input type="text" name="devs" id="devs">
+                            </div>
+                           <div class="form-action-buttons">
+                               <input type="submit" value="Submit">
+                           </div>
+                       </form>
+                   </td>
+               </div>
+               <div>
+                   <td>
+                       <table class="container" id="crudAcens">
+                           <thead >
+                               <div class="container">
+                                <tr class="container">
+                                    <th>Nome</th>
+                                    <th>Stack</th>
+                                    <th>Valor</th>
+                                    <th>Dias Úteis</th>
+                                    <th>Desenvolvedores</th>
+                                    <th>&emsp;&emsp;&emsp;</th>
+                                </tr>
+                                </div>
+                           </thead>
+                           <tbody>
+       
+                           </tbody>
+                       </table>
+                   </td>
+               </div> 
+            </tr>
+        </table>
+    <script src="script.js"></script>
+</body>
+</html>

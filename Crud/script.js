@@ -1,10 +1,13 @@
 var selectedRow = null
 
 function onFormSubmit() {
-    if(validate() && validate2()){
+    if(validate() && validate2() && validate3()&& validate4()&& validate5()){
         var formData = readFormData()
-            if (selectedRow == null)
+            if (selectedRow == null){
                 insertNewRecord(formData)
+                sum()
+                projects()
+            }
             else
                 updateRecord(formData)
         resetForm()
@@ -75,6 +78,34 @@ function onEdit(td){
 
 }
 
+function sum() {
+        let tabela = document.getElementById("crudAcens")
+        let rows = tabela.rows
+        let sum = 0
+        for (let i = 1; i < rows.length; i++) {
+            sum += Number(rows[i].cells[2].textContent)
+        }
+        let soma = document.getElementById('soma')
+        let projeto = (sum/270).toFixed(1)
+        soma.innerHTML = `<h3> Valor dos projetos R$${sum},00, ${projeto}% da meta!!  </h3>`
+        soma.style.color = '#084208'
+}
+
+function projects(){
+    let tabela = document.getElementById("crudAcens")
+    let rows = tabela.rows
+    let nProj = (Number(rows.length)-1)
+    let projects = document.getElementById('projects')
+    projects.innerHTML = `<h4> Quantidade de projetos ${nProj}/18!! </h4>`
+    projects.style.color = '#084208'
+        if((nProj % 3) == 0){
+            document.body.style.background = '#dfbe2b'
+        } else if((nProj % 3) == 1){
+            document.body.style.background = '#1eaa25'
+        } else if((nProj % 3) == 2){
+            document.body.style.background = '#e97516'
+        }
+}
 function updateRecord(formData){
     selectedRow.cells[0].innerHTML = formData.fullName
     selectedRow.cells[1].innerHTML = formData.stack
@@ -89,6 +120,8 @@ function onDelete(td){
         document.getElementById("crudAcens").deleteRow(row.rowIndex)
         resetForm()
     }
+    sum()
+    projects()
 }
 
 function validate(){
@@ -113,6 +146,45 @@ function validate2(){
             isValid = true
             if(!document.getElementById("stackValidationError").classList.contains("hide")){
                 document.getElementById("stackValidationError").classList.add("hide")                
+            }
+        }
+    return isValid    
+}
+function validate3(){
+    isValid = true
+        if(document.getElementById("valor").value == ""){
+            isValid = false
+            document.getElementById("valorValidationError").classList.remove("hide")
+        } else{
+            isValid = true
+            if(!document.getElementById("valorValidationError").classList.contains("hide")){
+                document.getElementById("valorValidationError").classList.add("hide")                
+            }
+        }
+    return isValid    
+}
+function validate4(){
+    isValid = true
+        if(document.getElementById("dias").value == ""){
+            isValid = false
+            document.getElementById("diasValidationError").classList.remove("hide")
+        } else{
+            isValid = true
+            if(!document.getElementById("diasValidationError").classList.contains("hide")){
+                document.getElementById("diasValidationError").classList.add("hide")                
+            }
+        }
+    return isValid    
+}
+function validate5(){
+    isValid = true
+        if(document.getElementById("devs").value == ""){
+            isValid = false
+            document.getElementById("devsValidationError").classList.remove("hide")
+        } else{
+            isValid = true
+            if(!document.getElementById("devsValidationError").classList.contains("hide")){
+                document.getElementById("devsValidationError").classList.add("hide")                
             }
         }
     return isValid    

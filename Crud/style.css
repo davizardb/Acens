@@ -22,6 +22,10 @@ header{
     overflow: scroll;
 }
 
+p{
+    padding: 15px;
+}
+
 .tabela th {
     position: sticky;
     top: 0;
